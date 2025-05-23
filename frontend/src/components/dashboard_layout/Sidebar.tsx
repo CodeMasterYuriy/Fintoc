@@ -70,7 +70,7 @@ const Sidebar = ({collapse}:{collapse:boolean}) => {
 			</div>
 			<div className='md:absolute mt-5 mb-5 justify-center left-20 bottom-8 gap-5 flex items-center'>
 				<span>Cerrar Sesión</span>
-				<button onClick={logout}><LogOut className='w-6 h-6' /></button>
+				<button onClick={() => logout(navigator)} className="transition-transform rounded-full p-2 hover:bg-[#599ad3] group"><LogOut className='w-6 h-6' /></button>
 			</div>
 		</aside>
   	);

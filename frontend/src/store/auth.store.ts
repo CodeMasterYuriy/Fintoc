@@ -1,14 +1,18 @@
 import { create } from "zustand";
 import { jwtDecode } from "jwt-decode";
 import { IUser } from "./types";
+
 interface AuthState {
   authUser: IUser | null;
   requestLoading: boolean;
   loginWithToken: (token: string) => void;
   getUser: () => any;
-  logout: () => void;
+  logout: (navigate?: (path: string) => void) => void; // <-- update type
   setRequestLoading: (isLoading: boolean) => void;
 }
+
+// Remove useNavigate() from here
+
 export const authStore = create<AuthState>((set) => ({
   authUser: null,
   requestLoading: false,
@@ -49,12 +53,14 @@ export const authStore = create<AuthState>((set) => ({
     set({ authUser: user });
     return token;
   },
-  logout: () => {
+  logout: (navigate) => {
     localStorage.removeItem("auth_token");
     set({ authUser: null });
+    if (navigate) {
+      navigate('/signin');
+    }
   },
   setRequestLoading: (isLoading: boolean) => {
     set({ requestLoading: isLoading });
   },
 }));
-

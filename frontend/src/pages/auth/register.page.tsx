@@ -95,12 +95,12 @@ const SignupPage = () => {
           <p className="text-[26px] sm:text-[30px] font-bold text-[#3A3A3A]">gestiona</p>
         </div>
 
-        <p className="text-[18px] sm:text-[22px] font-bold text-primary mt-3 sm:mt-[26px]">¡Crea tu cuenta!</p>
+        <p className="text-[18px] sm:text-[22px] font-bold text-primary mt-3 sm:mt-[26px] mb-[4px]">¡Crea tu cuenta!</p>
 
         <input
           type="text"
           placeholder="Nombre completo*"
-          className="w-full h-[54px] sm:h-[64px] bg-secondary rounded-[10px] sm:rounded-[15px] mt-[10px] px-4 sm:p-7 text-base sm:text-xl"
+          className="w-full h-[54px] sm:h-[64px] bg-secondary rounded-full mt-[15px] px-4 sm:p-7 text-base sm:text-xl"
           {...register("first_name")}
         />
         {errors.first_name && (
@@ -110,7 +110,7 @@ const SignupPage = () => {
         <input
           type="email"
           placeholder="Correo electrónico*"
-          className="w-full h-[54px] sm:h-[64px] bg-secondary rounded-[15px] sm:rounded-[15px] mt-3 sm:mt-[20px] px-4 sm:p-7 text-base sm:text-xl"
+          className="w-full h-[54px] sm:h-[64px] bg-secondary rounded-full mt-3 sm:mt-[20px] px-4 sm:p-7 text-base sm:text-xl"
           {...register("email")}
         />
         {errors.email && (
@@ -120,7 +120,7 @@ const SignupPage = () => {
         <input
           type="password"
           placeholder="Contraseña*"
-          className="w-full h-[54px] sm:h-[64px] bg-secondary rounded-[15px] sm:rounded-[15px] mt-3 sm:mt-[20px] p-7 text-base sm:text-xl"
+          className="w-full h-[54px] sm:h-[64px] bg-secondary rounded-full mt-3 sm:mt-[20px] p-7 text-base sm:text-xl"
           {...register("password")}
         />
         {errors.password && (
@@ -130,7 +130,7 @@ const SignupPage = () => {
         <input
           type="password"
           placeholder="Confirmar contraseña*"
-          className="w-full h-[54px] sm:h-[64px] bg-secondary rounded-[15px] sm:rounded-[15px] mt-3 sm:mt-[20px] p-7 text-base sm:text-xl"
+          className="w-full h-[54px] sm:h-[64px] bg-secondary rounded-full mt-3 sm:mt-[20px] p-7 text-base sm:text-xl"
           {...register("confirmPassword")}
         />
         {errors.confirmPassword && (

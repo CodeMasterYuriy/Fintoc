@@ -95,7 +95,7 @@ const LoginPage = () => {
         <input
           type="email"
           placeholder="Correo electrónico*"
-          className="w-full h-[50px] sm:h-[70px] bg-secondary rounded-[10px] sm:rounded-[15px] mt-[12px] sm:mt-[15px] px-4 sm:p-7 text-base sm:text-xl"
+          className="w-full h-[50px] sm:h-[70px] bg-secondary rounded-full mt-[12px] sm:mt-[15px] px-4 sm:p-7 text-base sm:text-xl"
           {...register("email")}
         />
         {errors.email && (
@@ -105,7 +105,7 @@ const LoginPage = () => {
         <input
           type="password"
           placeholder="Contraseña*"
-          className="w-full h-[50px] sm:h-[70px] bg-secondary rounded-[15px] sm:rounded-[15px] mt-3 sm:mt-[32px] px-4 sm:p-7 text-base sm:text-xl"
+          className="w-full h-[50px] sm:h-[70px] bg-secondary rounded-full mt-3 sm:mt-[32px] px-4 sm:p-7 text-base sm:text-xl"
           {...register("password")}
         />
         {errors.password && (

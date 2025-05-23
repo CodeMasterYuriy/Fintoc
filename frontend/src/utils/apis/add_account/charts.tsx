@@ -40,3 +40,20 @@ export const getSubscriptionRecent = async () => {
         throw error;
     }
 }
+
+export const getBudgetByCategoryThisMonth = async () => {
+    try {
+        const token = getUser();
+        const { data } = await axios.get(`${endpoint}/api/budget/information`, {
+        headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${token}`,
+        },
+        withCredentials: true,
+        });
+        return data;
+    } catch (error) {
+        console.error("Error fetching subscription each year:", error);
+        throw error;
+    }
+}

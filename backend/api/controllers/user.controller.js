@@ -341,3 +341,62 @@ const getSubscriptionTransactionsEachMonth = async (req, res) => {
     return error.message
   }
 };
+
+
+exports.getBudgetByCategoryThisMonth = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const banks = await Bank.findAll({ where: { userId } });
+    if (!banks || banks.length === 0) {
+      return res.status(404).json({ error: 'No banks found for user' });
+    }
+
+    const now = new Date();
+    const currentMonth = now.getUTCMonth() + 1; // JS months are 0-based
+    const currentYear = now.getUTCFullYear();
+
+    const pad = (n) => (n < 10 ? `0${n}` : n);
+    const dateFrom = `${currentYear}-${pad(currentMonth)}-01`;
+    const dateTo = `${currentYear}-${pad(currentMonth)}-${new Date(currentYear, currentMonth, 0).getDate()}`;
+
+    const budgetByCategory = {};
+
+    for (const bank of banks) {
+      let nextUrl = `${BELVO_API_URL}/transactions/?link=${bank.link}&date_from=${dateFrom}&date_to=${dateTo}`;
+      console.log('nextUrl:', nextUrl);
+      // while (nextUrl) {
+        const response = await axios.get(nextUrl, { headers }); // make sure 'headers' includes your auth
+        const data = response.data;
+
+        for (const tx of data.results) {
+          if (!tx.transacted_at) continue;
+
+          const amount = Number(tx.amount) || 0;
+          const category = (tx.category || 'Uncategorized').toLowerCase();
+
+          if (!budgetByCategory[category]) {
+            budgetByCategory[category] = { inflow: 0, outflow: 0 };
+          }
+
+          const type = (tx.type || '').toUpperCase();
+          if (type === 'INFLOW') {
+            budgetByCategory[category].inflow += amount;
+          } else if (type === 'OUTFLOW') {
+            budgetByCategory[category].outflow += amount;
+          }
+        }
+
+        nextUrl = data.next;
+      // }
+    }
+
+    return res.json({
+      month: now.toLocaleString('default', { month: 'short' }),
+      year: currentYear,
+      budgetByCategory,
+    });
+  } catch (error) {
+    console.error('Error fetching budget by category:', error);
+    return res.status(500).json({ error: error.message });
+  }
+}

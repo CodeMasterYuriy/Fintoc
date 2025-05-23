@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Link, LogOut_primary, Perfil, Premium_primary, Setting_Strocke } from '../icons';
+import { useAppStore } from "../../store";
+import { useNavigate } from "react-router-dom";
 
 type SettingProps = {
   onClick?: (action: string) => void;
@@ -9,6 +11,9 @@ type SettingProps = {
 export const SettingPopover: React.FC<SettingProps> = ({ onClick }) => {
   const [isOpen, setIsOpen] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
+
+  const { authUser, logout } = useAppStore.authStore.getState();
+  const navigator = useNavigate();
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -27,7 +32,7 @@ export const SettingPopover: React.FC<SettingProps> = ({ onClick }) => {
         className="p-2 rounded-full hover:bg-[#a7bbe0] transition"
         aria-label="Toggle Settings"
       >
-        <Setting_Strocke className="w-7 h-7 cursor-pointer" />
+        <Setting_Strocke className="w-7 h-7 text-primary" />
       </button>
 
       <AnimatePresence>
@@ -38,26 +43,30 @@ export const SettingPopover: React.FC<SettingProps> = ({ onClick }) => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="mt-2 w-[270px] bg-white rounded-xl p-5 z-50 overflow-hidden shadow-stone-950 shadow-lg"
+            className="absolute right-0 mt-3 w-72 bg-white rounded-2xl p-6 z-50 shadow-xl border border-gray-100"
           >
-            <div className="max-h-96 overflow-y-auto">
-              <button className="text-primary font-semibold w-full flex items-center justify-between px-[6px] py-1 rounded-full text-sm border-2 border-primary pr-5">
-                Perfil
+            <div className="flex flex-col gap-3">
+              <button className="flex items-center justify-between px-4 py-2 rounded-lg hover:bg-blue-50 transition text-primary font-medium" onClick={() => navigator('/profile')}>
+                <span>Perfil</span>
                 <Perfil className="text-xl" />
               </button>
-              <button className="text-primary font-semibold w-full flex items-center justify-between px-[6px] py-1 rounded-full text-sm border-2 mt-3 border-primary pr-5">
-                Cuentas Vinculadas
+              <button className="flex items-center justify-between px-4 py-2 rounded-lg hover:bg-blue-50 transition text-primary font-medium">
+                <span>Cuentas Vinculadas</span>
                 <Link className="text-xl" />
               </button>
-              <button className="text-primary font-semibold w-full flex items-center justify-between px-[6px] py-1 rounded-full text-sm border-2 mt-3 border-primary pr-5">
-                Ser Premium
+              <button className="flex items-center justify-between px-4 py-2 rounded-lg hover:bg-blue-50 transition text-primary font-medium">
+                <span>Ser Premium</span>
                 <Premium_primary className="text-xl" />
               </button>
             </div>
-            <div className="flex gap-5 items-center text-primary font-semibold">
-              <span>Cerrar Sesión</span>
-              <button onClick={() => onClick?.("logout")}>
-                <LogOut_primary className="w-5 h-5" />
+            <div className="border-t my-4" />
+            <div className="flex items-center justify-between px-4 cursor-pointer rounded-lg hover:bg-blue-50" onClick={() => logout(navigator)}>
+              <span className="text-primary font-medium">Cerrar Sesión</span>
+              <button
+                className="p-2 rounded-full transition"
+                aria-label="Cerrar Sesión"
+              >
+                <LogOut_primary className="w-5 h-5 text-red-500" />
               </button>
             </div>
           </motion.div>
@@ -65,4 +74,5 @@ export const SettingPopover: React.FC<SettingProps> = ({ onClick }) => {
       </AnimatePresence>
     </div>
   );
+
 };

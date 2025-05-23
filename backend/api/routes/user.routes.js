@@ -10,6 +10,7 @@ const {
     getMonthSubscriptionInformationByTransaction,
     getRecentSubscriptionInformationByTransaction,
     verifyUserBankConnection,
+    getBudgetByCategoryThisMonth,
 } = require('../controllers/user.controller');
 
 router.get('/users/me', authMiddleware, getProfile);
@@ -19,6 +20,7 @@ router.get('/account/verify', authMiddleware, verifyUserBankConnection);
 router.get('/recurring-expenses/information', authMiddleware, getSubscriptionInformation);
 router.get('/recurring-expenses/information/everymonth', authMiddleware, getMonthSubscriptionInformationByTransaction);
 router.get('/recurring-expenses/information/recent', authMiddleware, getRecentSubscriptionInformationByTransaction);
+router.get('/budget/information', authMiddleware, getBudgetByCategoryThisMonth);
 router.get('/gmail/recurring-information', authMiddleware, getSubscriptionInformationByGmail);
 
 module.exports = router;

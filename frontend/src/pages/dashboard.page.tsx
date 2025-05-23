@@ -80,7 +80,7 @@ const DashboardPage = () => {
               <div className='md:text-2xl text-ct-grey font-semibold'>Presupuesto Abril</div>
             </div>
             <div className='p-5 pr-0 pb-0'>
-              <Presupuesto />
+              <Presupuesto isConnected={ isConnected  } />
             </div>
           </div>
           <FixPagenation />
