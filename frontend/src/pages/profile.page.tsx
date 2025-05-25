@@ -162,7 +162,7 @@ const ProfilePage = () => {
         >
           {requestLoading ? <LoadingSpinner /> : "Registrarse"}
         </button>
-        <p className="text-ct-grey text-sm sm:text-lg mt-4 sm:mt-[28px] mb-4 sm:mb-[15px] font-bold text-center text-white">
+        <p className="text-sm sm:text-lg mt-4 sm:mt-[28px] mb-4 sm:mb-[15px] font-bold text-center text-white">
           ¿Debería usar mi cuenta anterior? <span className="pl-2 text-primary-100 cursor-pointer hover:underline" onClick={() => navigate('/dashboard')}>Panel de control</span>
         </p>
       </div>

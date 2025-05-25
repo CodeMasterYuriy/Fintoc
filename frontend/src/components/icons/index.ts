@@ -18,6 +18,9 @@ import { ReactComponent as Filter } from "./Filter.svg?react";
 import { ReactComponent as Plus_white } from "./Plus_white.svg?react";
 import { ReactComponent as Visible } from "./Visible.svg?react";
 import { ReactComponent as Download } from "./Download.svg?react";
+import { ReactComponent as BelvoSuccess } from "./Belvo_success.svg?react";
+import { ReactComponent as BelvoCancel } from "./Belvo_cancel.svg?react";
+
 export {
   Setting_Strocke,
   Home_Strocke,
@@ -38,5 +41,7 @@ export {
   Visible,
   Download,
   Cancel,
-  Filter
+  Filter,
+  BelvoSuccess,
+  BelvoCancel
 };

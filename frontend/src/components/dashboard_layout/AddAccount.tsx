@@ -2,41 +2,35 @@ import { useEffect, useState } from "react";
 import ButtonPluse from "../common/ButtonPlus";
 import { ChileLogo } from "../icons";
 import FullScreenLoader from "../common/Loading";
+import SuccessBelvoModal from "../dialogs/Success.modal";
+import FailBelvoModal from "../dialogs/Fail.modal";
 
 import {
   handleBankAccountClick,
   connectGmail
 } from "../../utils/apis/add_account";
+import { set } from "zod";
 
 declare global {
   interface Window {
     belvoSDK?: any;
   }
 }
+export type ModalState = {
+  isSucccess: boolean;
+  isFalse: boolean;
+};
 
 const AddAccount = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const [countryCode, setCountryCode] = useState("");
-  const [countryName, setCountryName] = useState("");
 
-  useEffect(() => {
-    if (typeof navigator !== "undefined" && navigator.language) {
-      const locale = navigator.language; // e.g., "en-US"
-      const code = locale.split("-")[1] || "US"; // fallback to 'US' if not found
-      setCountryCode(code);
+  const [modal, setModal] = useState<ModalState>({
+    isSucccess: false,
+    isFalse: false,
+  });
 
-      // Optional: Convert code to full country name (using Intl.DisplayNames)
-      if (typeof Intl.DisplayNames === "function") {
-        const regionNames = new Intl.DisplayNames(["en"], { type: "region" });
-        const fullName = regionNames.of(code) || "Unknown Country";
-        setCountryName(fullName);
-      }
-    }
-  }, []);
-
-  console.log(countryName, countryCode);
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://cdn.belvo.io/belvo-widget-1-stable.js";
@@ -55,7 +49,10 @@ const AddAccount = () => {
 
   return (
     <div className="bg-primary p-4 rounded-l-2xl w-full">
-      { loading && <FullScreenLoader /> }
+      {loading && <FullScreenLoader />}
+      {modal.isSucccess && <SuccessBelvoModal setModal={setModal} />}
+      {modal.isFalse && <FailBelvoModal setModal={setModal} />}
+
       <div id="belvo"></div>
 
       <div className="bg-white text-ct-grey rounded-full max-w-24 cursor-pointer flex px-4 py-1">
@@ -76,7 +73,7 @@ const AddAccount = () => {
         <ButtonPluse
           bgColor="primary"
           text="Cuenta Bancaria"
-          onClick={() => handleBankAccountClick(setLoading, setError)}
+          onClick={() => handleBankAccountClick(setLoading, setError, setModal)}
         />
         <ButtonPluse
           bgColor="white"

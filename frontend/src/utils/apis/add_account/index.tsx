@@ -9,7 +9,8 @@ const {
 
 export const handleBankAccountClick = async (
   setLoading: (b: boolean) => void,
-  setError: (e: string) => void
+  setError: (e: string) => void,
+  setModal: (m: { isSucccess: boolean; isFalse: boolean }) => void
 ) => {
   try {
     setLoading(true);
@@ -48,10 +49,10 @@ export const handleBankAccountClick = async (
           );
           const info = await res.json();
           console.log("📦 Subscription info:", info);
-
+          setModal({ isSucccess: true, isFalse: false });
           // Reload the page after successful callback
-          window.location.reload();
         } catch (apiError) {
+          setModal({ isSucccess: false, isFalse: true });
           console.error("❌ Failed to fetch subscription info:", apiError);
         }
       },

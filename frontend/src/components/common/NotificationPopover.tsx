@@ -80,7 +80,7 @@ export const NotificationPopover: React.FC = () => {
                   )} */}
                   <div>
                     {/* <p className="font-medium text-sm text-ct-grey">{item.title}</p> */}
-                    <p className="text-gray-600 text-sm">{item.message}</p>
+                    <p className="text-gray-600 text-sm cursor-pointer">{item.message}</p>
                     {/* <span className="text-xs text-gray-400">{item.timestamp}</span> */}
                   </div>
                 </div>
