@@ -13,6 +13,14 @@ const {
     getBudgetByCategoryThisMonth,
 } = require('../controllers/user.controller');
 
+const {
+    authPaypal,
+    paypalCallback,
+    sendPaypalPayment,
+    capturePayment,
+    cancelPayment
+} = require('../controllers/membership.controller');
+
 router.get('/users/me', authMiddleware, getProfile);
 router.put('/users/me', authMiddleware, updateProfile);
 router.get('/belvo/link', authMiddleware, registerLinkAndRetrieveAccounts);
@@ -23,4 +31,9 @@ router.get('/recurring-expenses/information/recent', authMiddleware, getRecentSu
 router.get('/budget/information', authMiddleware, getBudgetByCategoryThisMonth);
 router.get('/gmail/recurring-information', authMiddleware, getSubscriptionInformationByGmail);
 
+router.get('/paypal/subscription/authorize', authPaypal);
+router.get('/paypal/subscription/callback', paypalCallback);
+router.post('/paypal/subscription/releaseMembership', authMiddleware, sendPaypalPayment);
+router.get('/paypal/success',  capturePayment);
+router.get('/paypal/cancel', cancelPayment);
 module.exports = router;

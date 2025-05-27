@@ -16,6 +16,7 @@ import BalancesPage from "./pages/balances.page";
 import ExpensePage from "./pages/expensedetails.page";
 import TermsPage from "./pages/terms.page";
 import PrivacypolicyPage from "./pages/privacypolicy.page";
+import MembershipPage from "./pages/membership.page";
 
 function App() {
   return (
@@ -26,8 +27,8 @@ function App() {
       <Route path="/forgot-password" element={<VerifyPassword />} />
       <Route path="/reset-password" element={<ChangePassword />} />
       <Route path="/permission" element={<AllowPage />} />
-      <Route path="/terms" element={<TermsPage />} />
       <Route path="/privacy-policy" element={<PrivacypolicyPage />} />
+      <Route path="/terms" element={<TermsPage />} />
 
       <Route element={<PrivateRoute />}>
         <Route path="/profile" element={<ProfilePage />} />
@@ -38,6 +39,7 @@ function App() {
         <Route path="/expense" element={<ExpensePage />} />
         <Route path="/balances" element={<BalancesPage />} />
         <Route path="/budget" element={<BudgetPage />} />
+        <Route path="/membership" element={<MembershipPage />} />
       </Route>
     </Routes>
   );
