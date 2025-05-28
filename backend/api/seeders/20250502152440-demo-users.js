@@ -26,7 +26,7 @@ module.exports = {
         last_name: 'user',
         password: passwordHash2,
         roleId: 2,
-        allowed: false,
+        allowed: true,
         createdAt: new Date(),
         updatedAt: new Date()
       }

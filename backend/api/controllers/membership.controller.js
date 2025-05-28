@@ -2,8 +2,82 @@ const qs = require('qs');
 const axios = require('axios');
 const jwt = require('jsonwebtoken');
 const { User, Role, Membership } = require('../models');
+const { Op } = require('sequelize');
 
 const PAYPAL_API = 'https://api.sandbox.paypal.com';
+
+exports.getMembershipInformation = async (req, res) => {
+  try {
+    const userId = req.user.id;
+
+    const membership = await Membership.findOne({ where: { userId } });
+
+    if (membership) {
+      return res.json({
+        userId,
+        name: membership.name,
+        price: membership.price,
+        start_date: membership.start_date,
+        current_period_end: membership.current_period_end,
+      });
+    } else {
+      // No membership found, return free membership default
+      return res.json({
+        userId,
+        name: "Free Membership",
+        price: 0,
+        start_date: null,
+        current_period_end: null,
+      });
+    }
+  } catch (error) {
+    console.error('Error fetching subscription information:', error);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+
+exports.saveOrUpdatePaypalSubscription = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const { name, price } = req.body;
+
+    if (!name || !price) {
+      return res.status(400).json({ error: 'Missing required fields' });
+    }
+
+    const now = new Date();
+    const nextMonth = new Date(now);
+    nextMonth.setMonth(nextMonth.getMonth() + 1);
+
+    const existing = await Membership.findOne({ where: { userId } });
+
+    if (existing) {
+      // Update existing membership
+      existing.name = name;
+      existing.price = price;
+      existing.start_date = now;
+      existing.current_period_end = nextMonth;
+      await existing.save();
+
+      return res.status(200).json({ message: 'Membership updated' });
+    } else {
+      // Create new membership
+      await Membership.create({
+        userId,
+        name,
+        price,
+        start_date: now,
+        current_period_end: now,
+      });
+
+      return res.status(201).json({ message: 'Membership created' });
+    }
+  } catch (error) {
+    console.error('Error saving/updating PayPal subscription:', error);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+};
 
 const getPaypalAccessToken = async () => {
   const clientID = process.env.PAYPAL_CLIENT_ID;

@@ -1,6 +1,5 @@
 import { useAppStore } from "../../../store";
 import axios from "axios";
-
 const endpoint = import.meta.env.VITE_SERVER_ENDPOINT;
 
 const {
@@ -8,20 +7,48 @@ const {
 } = useAppStore.authStore.getState();
 
 export const handlePaypalSubscription = async (
-  setLoading: (b: boolean) => void,
-  setError: (e: string) => void
 ) => {
   try {
-    setLoading(true);
-    setError("");
     const token = getUser();
     const price = 30;
-    console.log("Token:", token);
-    window.location.href = `${endpoint}/api/paypal/subscription/authorize?token=${token}&price=${price}`;
+    const name = "Pro Plan";
+
+    const { data } = await axios.post(
+      `${endpoint}/api/paypal/subscription`,
+      { name, price },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${token}`,
+        },
+        withCredentials: true,
+      }
+    );
+
+    return data;
   } catch (err: any) {
-    console.error(err);
-    setError("Error authorizing PayPal subscription.");
+    console.error("Error authorizing PayPal subscription:", err);
+    throw err;
   } finally {
-    setLoading(false);
+  }
+};
+
+
+export const getSubscriptionInformation = async () => {
+  try {
+    const token = getUser();
+
+    const { data } = await axios.get(`${endpoint}/api/paypal/subscription`, {
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${token}`,
+      },
+      withCredentials: true,
+    });
+
+    return data;
+  } catch (err: any) {
+    console.error("Error fetching subscription information:", err);
+    throw err;
   }
 };
