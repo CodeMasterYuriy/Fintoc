@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { handlePaypalSubscription, getSubscriptionInformation } from '../utils/apis/subscription';
+import { Link } from 'react-router-dom';
 
 declare global {
   interface Window {
@@ -177,7 +178,13 @@ const MembershipPage = () => {
           <PaypalSubscribeButton membership={membership}/>
         </div>
       </div>
-    </div>
+      <div className='mt-12 flex justify-center'>
+        <Link to='/dashboard' className="text-primary underline">
+          Ir al panel de control
+        </Link>
+      </div>
+
+  </div>
   );
 };
 

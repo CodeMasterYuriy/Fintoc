@@ -54,7 +54,7 @@ export const SettingPopover: React.FC<SettingProps> = ({ onClick }) => {
                 <span>Cuentas Vinculadas</span>
                 <Link className="text-xl" />
               </button>
-              <button className="flex items-center justify-between px-4 py-2 rounded-lg hover:bg-blue-50 transition text-primary font-medium">
+              <button className="flex items-center justify-between px-4 py-2 rounded-lg hover:bg-blue-50 transition text-primary font-medium" onClick={() => navigator('/membership')}>
                 <span>Ser Premium</span>
                 <Premium_primary className="text-xl" />
               </button>
