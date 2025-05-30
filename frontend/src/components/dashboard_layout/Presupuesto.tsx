@@ -94,7 +94,7 @@ const Presupuesto: React.FC<PresupuestoProps> = ({ isConnected }) => {
         )
       ) : (
         <div className="text-center text-black font-semibold text-lg h-[300px] flex flex-col items-center justify-center">
-          <p>Conecta tu cuenta de Belvo o Gmail</p>
+          <p>Conecta tu cuenta bancaria o tarjeta mediante Belvo</p>
         </div>
       )}
     </div>

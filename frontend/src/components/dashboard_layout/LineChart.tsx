@@ -100,7 +100,7 @@ const CustomLineChart: React.FC<CustomLineChartProps> = ({ isConnected }) => {
         )
       ) : (
         <div className="text-center text-white font-semibold text-lg h-[300px] flex items-center justify-center">
-          Conecta tu cuenta de Belvo o Gmail
+          Conecta tu cuenta bancaria o tarjeta mediante Belvo
         </div>
       )}
     </div>

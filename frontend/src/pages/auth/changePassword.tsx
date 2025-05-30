@@ -80,7 +80,7 @@ const ChangePassword = () => {
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center relative px-4 sm:px-6 lg:px-8">
-      <div className="w-full max-w-[700px] flex gap-0 sm:gap-4 flex-col justify-center items-center border rounded-[24px] sm:rounded-[49px] px-4 sm:px-8 md:px-[80px] py-12 sm:py-20 bg-gradient-main z-20 relative sm:mt-[50px] sm:mb-[100px]">
+      <div className="w-full max-w-[550px] flex gap-0 sm:gap-4 flex-col justify-center items-center border rounded-[24px] sm:rounded-[49px] px-4 sm:px-8 py-12 sm:py-20 bg-gradient-main z-20 relative sm:mt-[50px] sm:mb-[100px]">
         <div className="flex justify-center items-center gap-4 sm:gap-6">
           <div className="w-[50px] h-[50px] sm:w-[60px] sm:h-[60px]">
             <svg width="100%" height="100%" viewBox="0 0 154 156" fill="none" xmlns="http://www.w3.org/2000/svg" className="">
@@ -93,12 +93,12 @@ const ChangePassword = () => {
           <p className="text-[2rem] sm:text-[2rem] font-bold text-white">gestiona</p>
         </div>
 
-        <p className="text-[1.8rem] font-bold text-primary-100 mt-3 sm:mt-[50px] text-center">Formulario de restablecimiento de contraseña</p>
+        <p className="text-[1.8rem] font-bold text-primary-100 mt-3 sm:mt-[30px] text-center">Formulario de restablecimiento de contraseña</p>
 
         <input
           type="password"
           placeholder="Contraseña*"
-          className="w-full h-[60px] sm:h-[70px] bg-secondary rounded-full mt-4 sm:mt-[24px] px-7 text-base sm:text-1xl"
+          className="w-full h-[60px]  bg-secondary rounded-full mt-4 sm:mt-[24px] px-7 text-base sm:text-1xl"
           {...register("password")}
         />
         {errors.password && (
@@ -108,7 +108,7 @@ const ChangePassword = () => {
         <input
           type="password"
           placeholder="Confirmar contraseña*"
-          className="w-full h-[60px] sm:h-[70px] bg-secondary rounded-full mt-4 sm:mt-[24px] px-7 text-base sm:text-1xl"
+          className="w-full h-[60px] bg-secondary rounded-full mt-4 sm:mt-[24px] px-7 text-base sm:text-1xl"
           {...register("confirmPassword")}
         />
         {errors.confirmPassword && (
@@ -117,7 +117,7 @@ const ChangePassword = () => {
 
         <button
           onClick={handleSubmit(onSubmit)}
-          className={`${requestLoading ? 'bg-disableColor' : 'bg-white'} relative text-primary max-w-[360px] text-base sm:text-lg font-bold rounded-[27px] sm:rounded-[54px] w-full h-[50px] mt-8 sm:mt-[40px]`}
+          className={`${requestLoading ? 'bg-disableColor' : 'bg-white'} relative text-primary max-w-[360px] text-base sm:text-lg font-bold rounded-[27px] sm:rounded-[54px] w-full h-[50px] mt-8 sm:mt-[30px]`}
           disabled={requestLoading}
         >
           {requestLoading ? <LoadingSpinner /> : "enviar correo electrónico"}

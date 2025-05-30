@@ -2,7 +2,7 @@ import FAQItem from './FAQitem';
 const FAQs = [
   {
     question: "¿Qué es Gestiona.io?",
-    answer: "Gestiona.io es una plataforma que te permite detectar, entender y administrar todas tus suscripciones activas. Puedes conectar tu banco (vía Belvo) o tu cuenta Gmail para que la plataforma identifique automáticamente los cobros recurrentes y te muestre toda la información en un panel claro y fácil de usar."
+    answer: "Gestiona.io es una plataforma que te permite detectar, entender y administrar todas tus suscripciones activas. Puedes conectar tu banco (vía Belvo) para que la plataforma identifique automáticamente los cobros recurrentes y te muestre toda la información en un panel claro y fácil de usar."
   },
   {
     question: "¿Es seguro conectar mi banco?",
@@ -19,6 +19,10 @@ const FAQs = [
   {
     question: "¿Gestiona.io es gratis?",
     answer: "Sí. Puedes usar la versión gratuita para detectar suscripciones y acceder al panel básico. También tendremos un plan Pro con funciones avanzadas como presupuestos, reportes mensuales y alertas personalizadas."
+  },
+  {
+    question: "¿En que países está disponible?",
+    answer: "Estamos disponibles en México y Colombia."
   },
   {
     question: "¿Puedo usar Gestiona.io si estoy en Chile?",

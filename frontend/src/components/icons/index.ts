@@ -20,6 +20,9 @@ import { ReactComponent as Visible } from "./Visible.svg?react";
 import { ReactComponent as Download } from "./Download.svg?react";
 import { ReactComponent as BelvoSuccess } from "./Belvo_success.svg?react";
 import { ReactComponent as BelvoCancel } from "./Belvo_cancel.svg?react";
+import { ReactComponent as Unsbscription } from "./Unsubscription.svg?react";
+import { ReactComponent as Cancelsubscription } from "./Cancelsubscription.svg?react";
+import { ReactComponent as Notsubscription } from "./Notsubscription.svg?react";
 
 export {
   Setting_Strocke,
@@ -43,5 +46,8 @@ export {
   Cancel,
   Filter,
   BelvoSuccess,
-  BelvoCancel
+  BelvoCancel,
+  Unsbscription,
+  Cancelsubscription,
+  Notsubscription,
 };

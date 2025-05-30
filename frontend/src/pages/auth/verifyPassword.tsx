@@ -58,7 +58,7 @@ const VerifyPassword = () => {
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center relative px-4 sm:px-6 lg:px-8">
-      <div className="w-full max-w-[650px] flex gap-0 sm:gap-4 flex-col justify-center items-center border rounded-[24px] sm:rounded-[49px] px-4 sm:px-8 md:px-[80px] py-12 sm:py-20 bg-gradient-main z-20 relative sm:mt-[50px] sm:mb-[100px]">
+      <div className="w-full max-w-[550px] flex gap-0 sm:gap-4 flex-col justify-center items-center border rounded-[24px] sm:rounded-[49px] px-4 sm:px-8 md:px-[80px] py-12 sm:py-20 bg-gradient-main z-20 relative sm:mt-[50px] sm:mb-[100px]">
         <div className="flex justify-center items-center gap-4 sm:gap-6">
           <div className="w-[50px] h-[50px] sm:w-[60px] sm:h-[60px]">
             <svg width="100%" height="100%" viewBox="0 0 154 156" fill="none" xmlns="http://www.w3.org/2000/svg" className="">
@@ -71,14 +71,14 @@ const VerifyPassword = () => {
           <p className="text-[2rem] sm:text-[2rem] text-white">gestiona</p>
         </div>
 
-        <p className="text-[2.2rem] font-bold text-primary-100 mt-3 sm:mt-[40px] text-center">Restablecer contraseña</p>
-        <p className="text-center text-white text-[1.4rem] font-bold">Te enviaremos un enlace para</p>
-        <p className="text-center text-white text-[1.4rem] font-bold">reestablecer tu contraseña</p>
+        <p className="text-[1.8rem] font-bold text-primary-100 mt-3 sm:mt-[20px] text-center">Restablecer contraseña</p>
+        <p className="text-center text-white text-[1.2rem]">Te enviaremos un enlace para</p>
+        <p className="text-center text-white text-[1.2rem]">reestablecer tu contraseña</p>
 
         <input
           type="email"
           placeholder="Correo electrónico*"
-          className="w-full h-[60px] sm:h-[70px] bg-secondary rounded-full mt-4 sm:mt-[32px] px-4 sm:px-7 text-base sm:text-1xl"
+          className="w-full h-[60px] sm:h-[50px] bg-secondary rounded-full mt-4 sm:mt-[20px] px-4 sm:px-7 text-base sm:text-1xl"
           {...register("email")}
         />
         {errors.email && (
@@ -87,13 +87,13 @@ const VerifyPassword = () => {
 
         <button
           onClick={handleSubmit(onSubmit)}
-          className={`${requestLoading ? "bg-disableColor" : "bg-white"} relative text-primary max-w-[370px] text-base sm:text-lg font-bold rounded-[27px] sm:rounded-[54px] w-full h-[50px] mt-8 sm:mt-[40px]`}
+          className={`${requestLoading ? "bg-disableColor" : "bg-white"} relative text-primary max-w-[370px] text-base sm:text-lg font-bold rounded-[27px] sm:rounded-[54px] w-full h-[40px] mt-5 sm:mt-[20px]`}
           disabled={requestLoading}
         >
           {requestLoading ? <LoadingSpinner /> : "Enviar enlace"}
         </button>
 
-        <p className="text-ct-grey text-sm sm:text-lg mt-3 sm:mt-[28px] mb-2 sm:mb-[15px] font-bold text-center">
+        <p className="text-ct-grey text-sm sm:text-lg mt-2 sm:mt-[15px] font-bold text-center">
           <span className="text-white cursor-pointer hover:underline" onClick={() => navigate('/signin')}>volver a la página de inicio de sesión</span>
         </p>
       </div>

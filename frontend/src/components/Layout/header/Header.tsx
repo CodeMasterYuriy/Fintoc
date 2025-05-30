@@ -34,9 +34,9 @@ const Header = () => {
 
         {menubutton?
         <nav className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-8">
-          <a href="#" className="text-gray-700 hover:text-primary text-lg">Servicios</a>
-          <a href="#" className="text-gray-700 hover:text-primary text-lg">Aprende</a>
-          <a href="" onClick={() => navigate('/signup')} className="text-primary font-semibold text-lg">Registro</a>
+          <a href="#" className="text-gray-700 hover:text-primary text-lg font-bold">Servicios</a>
+          <a href="#" className="text-gray-700 hover:text-primary text-lg font-bold">Aprende</a>
+          <a href="" onClick={() => navigate('/signup')} className="text-gray-700 hover:text-primary text-lg font-bold">Registro</a>
         </nav>: <MenuButton />}
       </div>
     </header>

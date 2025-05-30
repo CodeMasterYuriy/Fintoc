@@ -91,7 +91,7 @@ const Gastos_Recientes: React.FC<GastosRecientesProps> = ({ isConnected }) => {
         )
       ) : (
         <div className="text-center text-black font-semibold text-lg h-[300px] flex flex-col items-center justify-center">
-          <p>Conecta tu cuenta de Belvo o Gmail</p>
+          <p>Conecta tu cuenta bancaria o tarjeta mediante Belvo</p>
           <button className="bg-primary text-white font-semibold px-8 py-2 mt-4 rounded-full hover:bg-hoverColor transition">
             Vincular Cuenta
           </button>

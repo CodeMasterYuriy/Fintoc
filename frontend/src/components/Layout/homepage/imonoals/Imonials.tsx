@@ -1,67 +1,48 @@
 import { useState, useEffect } from 'react';
 import ImonialCard from './ImonialSlider';
-import ArticleAvatar from '../../../../assets/articel_avatar.jpg';
-import nextArrow from '../../../../assets/icons/arrow2.svg';
+import AgencyAvatar1 from '../../../../assets/agency1.jpg';
+import AgencyAvatar2 from '../../../../assets/agency2.jpg';
+import AgencyAvatar3 from '../../../../assets/agency3.jpg';
+import AgencyAvatar4 from '../../../../assets/agency4.jpeg';
+import AgencyAcatar5 from '../../../../assets/agency5.jpeg';
+import ArticleAvatar from '../../../../assets/agency6.jpeg';
 
+import nextArrow from '../../../../assets/icons/arrow2.svg';
 const cardes = [
   {
     name: 'Camila Torres',
-    image: ArticleAvatar,
+    image: AgencyAvatar1,
     text: 'Me encantó. Detectó 4 suscripciones que ni sabía que seguían activas. En 10 minutos cancelé todo lo que no usaba.',
     star: 5,
   },
   {
     name: 'Felipe Rojas',
-    image: ArticleAvatar,
+    image: AgencyAvatar2,
     text: 'Muy útil para ordenar mis gastos, aunque me gustaría que se pudiera cancelar todo directamente desde la página.',
-    star: 4,
+    star: 5,
   },
   {
     name: 'Valentina Pérez',
-    image: ArticleAvatar,
+    image: AgencyAvatar3,
     text: 'Por fin una plataforma que te avisa antes de que te cobren. Ya no me llegan sorpresas el 1º de cada mes.',
     star: 5,
   },
   {
     name: 'Andrés González',
-    image: ArticleAvatar,
+    image: AgencyAvatar4,
     text: 'Soy emprendedor y esto me ayudó a separar los gastos de mi negocio y los personales. Increíblemente útil.',
     star: 5,
   },
   {
     name: 'Sofía Ramírez',
-    image: ArticleAvatar,
+    image: AgencyAcatar5,
     text: 'Me gustó mucho. El panel es claro, fácil de usar. Le pondría 5 estrellas si incluyera tarjeta virtual para pagos.',
-    star: 4,
+    star: 5,
   },
   {
     name: 'Diego Castillo',
     image: ArticleAvatar,
     text: 'Vi un TikTok, me metí de curiosidad y terminé cancelando 3 apps que me cobraban hace meses. Recomendado.',
-    star: 5,
-  },
-  {
-    name: 'Carla Espinoza',
-    image: ArticleAvatar,
-    text: 'Buena plataforma, aunque al principio me costó entender cómo conectar mi cuenta. Después todo fluyó.',
-    star: 4,
-  },
-  {
-    name: 'Ignacio Valdés',
-    image: ArticleAvatar,
-    text: 'Lo que más me gustó fue poder armar presupuestos por categoría. Me ayudó a darme cuenta que gastaba más en apps que en comida.',
-    star: 5,
-  },
-  {
-    name: 'Francisca León',
-    image: ArticleAvatar,
-    text: 'Fácil de usar, con diseño bonito y claro. Ideal para quienes no llevamos planilla de Excel.',
-    star: 5,
-  },
-  {
-    name: 'Tomás Herrera',
-    image: ArticleAvatar,
-    text: 'Gestiona es como tener un radar financiero. Te muestra todo lo que no ves. Lo recomiendo a todos mis amigos.',
     star: 5,
   },
 ];

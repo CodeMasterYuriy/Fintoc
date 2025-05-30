@@ -27,8 +27,8 @@ const TopSection = ({ activeTab, setActiveTab }: { activeTab: string; setActiveT
       </div>
 
       <button className="bg-primary text-white sm:pr-4 sm:pl-4 p-3 rounded-full hover:bg-hoverColor transition block">
-        <div className="flex gap-6 justify-between items-center">
-          <span className="sm:block hidden">Agregar Inversión</span>
+        <div className="flex gap-2 px-2 justify-between items-center">
+          <span className="sm:block hidden">Descargar Gastos</span>
           <Download className="w-6 h-6" />
         </div>
       </button>
@@ -36,4 +36,4 @@ const TopSection = ({ activeTab, setActiveTab }: { activeTab: string; setActiveT
   );
 };
 
-export default TopSection; 
+export default TopSection;

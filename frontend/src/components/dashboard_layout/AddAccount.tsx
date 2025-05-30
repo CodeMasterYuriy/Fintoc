@@ -48,28 +48,28 @@ const AddAccount = () => {
   }, []);
 
   return (
-    <div className="bg-primary p-4 rounded-l-2xl w-full">
+    <div className="bg-primary p-8 rounded-l-2xl w-full">
       {loading && <FullScreenLoader />}
       {modal.isSucccess && <SuccessBelvoModal setModal={setModal} />}
       {modal.isFalse && <FailBelvoModal setModal={setModal} />}
 
       <div id="belvo"></div>
 
-      <div className="bg-white text-ct-grey rounded-full max-w-24 cursor-pointer flex px-4 py-1">
-        <ChileLogo className="w-6 h-6" />
-        Chile
+      <div className="bg-white text-ct-grey rounded-full max-w-28 cursor-pointer flex justify-center py-1 items-center gap-2 mt-7">
+        <ChileLogo className="w-8 h-8" />
+        <p>Chile</p>
       </div>
 
-      <div className="text-white text-md font-semibold my-8">
+      <div className="text-white text-[19px] text-md font-semibold my-6">
         Agrega más cuentas
       </div>
 
-      <div className="h-40 flex flex-col justify-between items-between">
-        <ButtonPluse
+      <div className="flex flex-col justify-between items-between mb-7 gap-6">
+        {/* <ButtonPluse
           bgColor="primary"
           text="Correo electrónico"
           onClick={() => connectGmail(setLoading, setError)}
-        />
+        /> */}
         <ButtonPluse
           bgColor="primary"
           text="Cuenta Bancaria"

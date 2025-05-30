@@ -7,6 +7,8 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useAppStore } from "../../store";
 import { toast } from "react-toastify";
+import { Link } from 'react-router-dom';
+
 import LoadingSpinner from "../../components/common/LoadingSpinner";
 
 const signupSchema = object({
@@ -80,9 +82,11 @@ const SignupPage = () => {
     signupUser(values);
   };
 
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   return (
     <div className="min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 relative">
-      <div className="w-full max-w-[700px] flex flex-col justify-center items-center mt-[10px] mb-[75px] border rounded-[24px] sm:rounded-[49px] shadow-md px-4 sm:px-8 md:px-[80px] py-8 sm:py-3 bg-white z-20 relative sm:mt-[30px] md:mb-[110px]">
+      <div className="w-full max-w-[700px] flex flex-col justify-center items-center mt-[10px] mb-[70px] border rounded-[24px] sm:rounded-[49px] shadow-md px-4 sm:px-8 md:px-[80px] py-8 sm:py-3 bg-white z-20 relative sm:mt-[30px] md:mb-[110px]">
         <div className="flex justify-center items-center gap-4 sm:gap-6 mt-0 sm:mt-5">
           <div className="w-[48px] h-[48px] sm:w-[58px] sm:h-[58px]">
             <svg width="100%" height="100%" viewBox="0 0 154 156" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -117,19 +121,48 @@ const SignupPage = () => {
           <p className="text-red-500 text-xl mt-2">Se requiere correo electrónico</p>
         )}
 
-        <input
-          type="password"
-          placeholder="Contraseña*"
-          className="w-full h-[54px] sm:h-[64px] bg-secondary rounded-full mt-3 sm:mt-[20px] p-7 text-base sm:text-xl"
-          {...register("password")}
-        />
+       <div className="relative w-full">
+          <input
+            type={showConfirmPassword ? "text" : "password"}
+            placeholder="password"
+            className="w-full h-[54px] sm:h-[64px] bg-secondary rounded-full mt-3 sm:mt-[20px] p-7 text-base sm:text-xl pr-16"
+            {...register("password")}
+          />
+
+          <button
+            type="button"
+            onClick={() => setShowConfirmPassword((prev) => !prev)}
+            className="absolute right-5 top-[60%] -translate-y-1/2 text-gray-600 focus:outline-none"
+          >
+            {showConfirmPassword ? (
+              // Eye-off icon (hide password)
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                  d="M13.875 18.825A10.05 10.05 0 0112 19c-5.523 0-10-5-10-5a19.754 19.754 0 014.322-4.908m3.745-2.081A9.961 9.961 0 0112 5c5.523 0 10 5 10 5a19.738 19.738 0 01-2.435 2.559M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                  d="M3 3l18 18" />
+              </svg>
+            ) : (
+              // Eye icon (show password)
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
+            )}
+          </button>
+        </div>
+
         {errors.password && (
           <p className="text-red-500 text-xl mt-2">Se requiere contraseña</p>
         )}
 
         <input
-          type="password"
-          placeholder="Confirmar contraseña*"
+          type={showConfirmPassword ? "text" : "password"}
+          placeholder="password"
           className="w-full h-[54px] sm:h-[64px] bg-secondary rounded-full mt-3 sm:mt-[20px] p-7 text-base sm:text-xl"
           {...register("confirmPassword")}
         />
@@ -137,7 +170,7 @@ const SignupPage = () => {
           <p className="text-red-500 text-xl mt-2">Confirme su contraseña</p>
         )}
 
-        <div className="flex flex-col sm:flex-row w-full gap-3 justify-between items-start sm:items-center mt-4 sm:mt-[14px]">
+        <div className="flex flex-col sm:flex-row w-full gap-3 justify-between items-start sm:items-center mt-6 sm:mt-[14px]">
           <label className="text-base sm:text-sm font-bold flex items-center gap-2">
             <input type="checkbox" className="w-4 h-4 sm:w-5 sm:h-5 accent-primary"/>
             Mostrar Contraseña
@@ -172,7 +205,14 @@ const SignupPage = () => {
       </div>
       <div className="flex h-[120px] md:h-[180px] justify-center items-center bg-primary w-full text-white absolute bottom-0 z-0">
         <div className="md:w-[1040px] pt-[25px] md:pt-[60px] w-full flex justify-center">
-          <p className="text-1xl sm:text-lg font-bold text-white">¿Ya tienes cuenta? Inicia sesión aquí.</p>
+          {/* <div className="flex flex-col sm:flex-row justify-between items-center sm:items-start gap-3 sm:gap-8 pb-4 sm:pb-8">
+                        <Link to="#" className="text-base sm:text-lg font-bold text-white">¿Necesitas ayuda?</Link>
+                        <div className="flex flex-col gap-2 justify-center items-center">
+                          <Link to="/terms" className="text-base sm:text-lg font-bold text-white">Condiciones de uso</Link>
+                          <Link to="#" className="text-base sm:text-lg font-bold">Contáctanos</Link>
+                        </div>
+                        <Link to="/privacy-policy" className="text-base sm:text-lg font-bold text-white">Política de privacidad</Link>
+                      </div> */}
         </div>
       </div>
     </div>

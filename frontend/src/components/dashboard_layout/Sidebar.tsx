@@ -36,7 +36,7 @@ const Sidebar = ({collapse}:{collapse:boolean}) => {
 	};
 
   	return (
-		<aside className={`min-w-80 text-white h-full overflow-y-auto relative transition-all duration-300 ${collapse ? '-left-[22rem]' : 'left-0'} z-50 bg-gradient-main`}>
+		<aside className={`min-w-[22rem] text-white h-full overflow-y-auto relative transition-all duration-300 ${collapse ? '-left-[22rem]' : 'left-0'} z-50 bg-gradient-main`}>
 			<div className='flex justify-between px-4 py-[9px] md:py-6 items-center'>
 				<h1 className="text-xl place-conten font-medium">Hola, <span>{authUser?.first_name}</span></h1>
 				<div className='flex gap-1'>
@@ -68,7 +68,7 @@ const Sidebar = ({collapse}:{collapse:boolean}) => {
 				<ButtonPlus text='Agregar cuenta' bgColor='white' onClick={() => console.log('Agregar Tarjeta de Crédito clicked')}/>
 				<ButtonPlus text='Agregar Tarjeta de Crédito' bgColor='transparent' onClick={() => console.log('Agregar Tarjeta de Crédito clicked')} />
 			</div>
-			<div className='md:absolute mt-5 mb-5 justify-center left-20 bottom-8 gap-5 flex items-center'>
+			<div className='absolute mt-5 mb-5 left-24 bottom-8 gap-5 flex items-center'>
 				<span>Cerrar Sesión</span>
 				<button onClick={() => logout(navigator)} className="transition-transform rounded-full p-2 hover:bg-[#599ad3] group"><LogOut className='w-6 h-6' /></button>
 			</div>
