@@ -17,10 +17,10 @@ const SummaryTable = () => {
       <div className="rounded-2xl bg-secondary w-full overflow-hidden mt-12">
         <div className="flex gap-2 p-4 max-w-[400px] mx-auto mt-4">
           <button className="bg-primary py-3 px-3 rounded-full w-full text-white text-[14px] sm:text-[15px] font-bold">
-            Histórico
+            Histórico for Resumen
           </button>
           <button className="bg-ct-grey py-3 px-3 rounded-full w-full text-white text-[14px] sm:text-[15px] font-bold hover:bg-secondary-100" onClick={() => navigateToPages('/expense')}>
-            Este Mes
+            Este mes for Detalle
           </button>
         </div>
 
